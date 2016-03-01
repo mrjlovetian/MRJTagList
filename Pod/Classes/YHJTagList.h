@@ -84,10 +84,22 @@
 
 @optional
 
+/**
+ *  单个标签
+ *
+ *  @param tagName  标签值
+ *  @param tagIndex 标签下标
+ */
 - (void)selectedTag:(NSString *)tagName tagIndex:(NSInteger)tagIndex;
 - (void)selectedTag:(NSString *)tagName;
 - (void)tagListTagsChanged:(YHJTagList *)tagList;
 
+/**
+ *  多标签的代理方法
+ *
+ *  @param tagNames  多标签的名称
+ *  @param tagIndexs 多标签的下标值
+ */
 - (void)selectedTags:(NSArray *)tagNames tagIndex:(NSArray *)tagIndexs;
 
 @end
