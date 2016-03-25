@@ -5,6 +5,7 @@
 [![Version](https://img.shields.io/cocoapods/v/YHJTagList.svg?style=flat)](http://cocoapods.org/pods/YHJTagList)
 [![License](https://img.shields.io/cocoapods/l/YHJTagList.svg?style=flat)](http://cocoapods.org/pods/YHJTagList)
 [![Platform](https://img.shields.io/cocoapods/p/YHJTagList.svg?style=flat)](http://cocoapods.org/pods/YHJTagList)
+![Alt Text](http://www.sheawong.com/wp-content/uploads/2013/08/keephatin.gif)
 
 ## Usage
 
