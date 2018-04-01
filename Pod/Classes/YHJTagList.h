@@ -10,8 +10,7 @@
 
 @protocol YHJTagListDelegate, YHJTagViewDelegate;
 
-@interface YHJTagList : UIScrollView
-{
+@interface YHJTagList : UIScrollView {
     UIView      *view;
     NSArray     *textArray;
     CGSize      sizeFit;

@@ -35,8 +35,7 @@
 
 @synthesize view, textArray, automaticResize;
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         [self addSubview:view];
@@ -65,16 +64,14 @@
     return self;
 }
 
-- (NSMutableArray *)tagIndexs
-{
+- (NSMutableArray *)tagIndexs {
     if (!_tagIndexs) {
         _tagIndexs = [NSMutableArray arrayWithCapacity:1];
     }
     return _tagIndexs;
 }
 
-- (NSMutableArray *)tagNames
-{
+- (NSMutableArray *)tagNames {
     if (!_tagNames) {
         _tagNames = [NSMutableArray arrayWithCapacity:1];
     }
@@ -103,46 +100,39 @@
     return self;
 }
 
-- (void)setTags:(NSArray *)array
-{
+- (void)setTags:(NSArray *)array {
     textArray = [[NSArray alloc] initWithArray:array];
     sizeFit = CGSizeZero;
     if (automaticResize) {
         [self display];
         self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, sizeFit.width, sizeFit.height);
-    }
-    else {
+    } else {
         [self display];
     }
 }
 
-- (void)setTagBackgroundColor:(UIColor *)color
-{
+- (void)setTagBackgroundColor:(UIColor *)color {
     lblBackgroundColor = color;
     [self display];
 }
 
-- (void)setTagHighlightColor:(UIColor *)color
-{
+- (void)setTagHighlightColor:(UIColor *)color {
     self.highlightedBackgroundColor = color;
     [self display];
 }
 
-- (void)setViewOnly:(BOOL)viewOnly
-{
+- (void)setViewOnly:(BOOL)viewOnly {
     if (_viewOnly != viewOnly) {
         _viewOnly = viewOnly;
         [self display];
     }
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
 }
 
-- (void)display
-{
+- (void)display {
     NSMutableArray *tagViews = [NSMutableArray array];
     for (UIView *subview in [self subviews]) {
         if ([subview isKindOfClass:[YHJTagView class]]) {
@@ -167,8 +157,7 @@
         if (tagViews.count > 0) {
             tagView = [tagViews lastObject];
             [tagViews removeLastObject];
-        }
-        else {
+        } else {
             tagView = [[YHJTagView alloc] init];
         }
         
@@ -220,24 +209,20 @@
     self.contentSize = sizeFit;
 }
 
-- (CGSize)fittedSize
-{
+- (CGSize)fittedSize {
     return sizeFit;
 }
 
-- (void)scrollToBottomAnimated:(BOOL)animated
-{
+- (void)scrollToBottomAnimated:(BOOL)animated {
     [self setContentOffset: CGPointMake(0.0, self.contentSize.height - self.bounds.size.height + self.contentInset.bottom) animated: animated];
 }
 
-- (void)touchDownInside:(id)sender
-{
+- (void)touchDownInside:(id)sender {
     UIButton *button = (UIButton*)sender;
     [[button superview] setBackgroundColor:self.highlightedBackgroundColor];
 }
 
-- (void)touchUpInside:(id)sender
-{
+- (void)touchUpInside:(id)sender {
     UIButton *button = (UIButton*)sender;
     YHJTagView *tagView = (YHJTagView *)[button superview];
     
@@ -245,22 +230,19 @@
         tagView.IsSelected = !tagView.IsSelected;
         if (tagView.IsSelected) {
             tagView.backgroundColor = [UIColor blueColor];
-        }else
-        {
+        } else {
             tagView.backgroundColor = [UIColor clearColor];
         }
         
         if ([self.tagIndexs containsObject:[NSString stringWithFormat:@"%ld", tagView.tag]]) {
             [self.tagIndexs removeObject:[NSString stringWithFormat:@"%ld", tagView.tag]];
-        }else
-        {
+        } else {
             [self.tagIndexs addObject:[NSString stringWithFormat:@"%ld", tagView.tag]];
         }
         
         if ([self.tagNames containsObject:tagView.label.text]) {
             [self.tagNames removeObject:tagView.label.text];
-        }else
-        {
+        } else {
             [self.tagNames addObject:tagView.label.text];
         }
         
@@ -268,9 +250,7 @@
         if ([self.tagDelegate respondsToSelector:@selector(selectedTags:tagIndex:)]) {
             [self.tagDelegate selectedTags:self.tagNames tagIndex:self.tagIndexs];
         }
-        
-    }else
-    {
+    } else {
         _temView.backgroundColor = [UIColor clearColor];
         _temView = tagView;
         tagView.backgroundColor = [UIColor blueColor];
@@ -302,20 +282,17 @@
     }*/
 }
 
-- (void)touchDragExit:(id)sender
-{
+- (void)touchDragExit:(id)sender {
     UIButton *button = (UIButton*)sender;
     [[button superview] setBackgroundColor:[self getBackgroundColor]];
 }
 
-- (void)touchDragInside:(id)sender
-{
+- (void)touchDragInside:(id)sender {
     UIButton *button = (UIButton*)sender;
     [[button superview] setBackgroundColor:[self getBackgroundColor]];
 }
 
-- (UIColor *)getBackgroundColor
-{
+- (UIColor *)getBackgroundColor {
     if (!lblBackgroundColor) {
         return BACKGROUND_COLOR;
     } else {
@@ -323,44 +300,37 @@
     }
 }
 
-- (void)setCornerRadius:(CGFloat)cornerRadius
-{
+- (void)setCornerRadius:(CGFloat)cornerRadius {
     _cornerRadius = cornerRadius;
     [self display];
 }
 
-- (void)setBorderColor:(UIColor*)borderColor
-{
+- (void)setBorderColor:(UIColor*)borderColor {
     _borderColor = borderColor;
     [self display];
 }
 
-- (void)setBorderWidth:(CGFloat)borderWidth
-{
+- (void)setBorderWidth:(CGFloat)borderWidth {
     _borderWidth = borderWidth;
     [self display];
 }
 
-- (void)setTextColor:(UIColor *)textColor
-{
+- (void)setTextColor:(UIColor *)textColor {
     _textColor = textColor;
     [self display];
 }
 
-- (void)setTextShadowColor:(UIColor *)textShadowColor
-{
+- (void)setTextShadowColor:(UIColor *)textShadowColor {
     _textShadowColor = textShadowColor;
     [self display];
 }
 
-- (void)setTextShadowOffset:(CGSize)textShadowOffset
-{
+- (void)setTextShadowOffset:(CGSize)textShadowOffset {
     _textShadowOffset = textShadowOffset;
     [self display];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     view = nil;
     textArray = nil;
     lblBackgroundColor = nil;
@@ -383,8 +353,7 @@
 
 @implementation YHJTagView
 
-- (id)init
-{
+- (id)init {
     self = [super init];
     if (self) {
         _label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
@@ -408,8 +377,7 @@
     return self;
 }
 
-- (void)updateWithString:(id)text font:(UIFont*)font constrainedToWidth:(CGFloat)maxWidth padding:(CGSize)padding minimumWidth:(CGFloat)minimumWidth
-{
+- (void)updateWithString:(id)text font:(UIFont *)font constrainedToWidth:(CGFloat)maxWidth padding:(CGSize)padding minimumWidth:(CGFloat)minimumWidth {
     CGSize textSize = CGSizeZero;
     BOOL isTextAttributedString = [text isKindOfClass:[NSAttributedString class]];
     
@@ -434,66 +402,54 @@
     [_button setAccessibilityLabel:self.label.text];
 }
 
-- (void)setCornerRadius:(CGFloat)cornerRadius
-{
+- (void)setCornerRadius:(CGFloat)cornerRadius {
     [self.layer setCornerRadius:cornerRadius];
 }
 
-- (void)setBorderColor:(CGColorRef)borderColor
-{
+- (void)setBorderColor:(CGColorRef)borderColor {
     [self.layer setBorderColor:borderColor];
 }
 
-- (void)setBorderWidth:(CGFloat)borderWidth
-{
+- (void)setBorderWidth:(CGFloat)borderWidth {
     [self.layer setBorderWidth:borderWidth];
 }
 
-- (void)setLabelText:(NSString*)text
-{
+- (void)setLabelText:(NSString*)text {
     [_label setText:text];
 }
 
-- (void)setTextColor:(UIColor *)textColor
-{
+- (void)setTextColor:(UIColor *)textColor {
     [_label setTextColor:textColor];
 }
 
-- (void)setTextShadowColor:(UIColor*)textShadowColor
-{
+- (void)setTextShadowColor:(UIColor*)textShadowColor {
     [_label setShadowColor:textShadowColor];
 }
 
-- (void)setTextShadowOffset:(CGSize)textShadowOffset
-{
+- (void)setTextShadowOffset:(CGSize)textShadowOffset {
     [_label setShadowOffset:textShadowOffset];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     _label = nil;
     _button = nil;
 }
 
 #pragma mark - UIMenuController support
 
-- (BOOL)canBecomeFirstResponder
-{
+- (BOOL)canBecomeFirstResponder {
     return YES;
 }
 
-- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
-{
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender {
     return (action == @selector(copy:)) || (action == @selector(delete:));
 }
 
-- (void)copy:(id)sender
-{
+- (void)copy:(id)sender {
     [[UIPasteboard generalPasteboard] setString:self.label.text];
 }
 
-- (void)delete:(id)sender
-{
+- (void)delete:(id)sender {
     [self.delegate tagViewWantsToBeDeleted:self];
 }
 

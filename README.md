@@ -1,5 +1,4 @@
 # YHJTagList
-<<<<<<< HEAD
 
 [![CI Status](http://img.shields.io/travis/余洪江/YHJTagList.svg?style=flat)](https://travis-ci.org/余洪江/YHJTagList)
 [![Version](https://img.shields.io/cocoapods/v/YHJTagList.svg?style=flat)](http://cocoapods.org/pods/YHJTagList)
@@ -34,6 +33,3 @@ pod "YHJTagList"
 
 
 YHJTagList is available under the MIT license. See the LICENSE file for more info.
-=======
-多选标签
->>>>>>> 6b19f4323ad2ca1ade07043c68be8826b54a13bc

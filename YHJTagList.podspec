@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "YHJTagList"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "可设置多标签，单个标签选择."
 
 # This description is used to generate tags and improve search results.
