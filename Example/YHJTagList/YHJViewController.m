@@ -15,10 +15,9 @@
 
 @implementation YHJViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
+- (void)viewDidLoad {
+    
+    [super viewDidLoad]; 
 
     MRJTagList *listView = [[MRJTagList alloc] initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 100)];
     listView.tagDelegate = self;
@@ -31,7 +30,8 @@
     listView.font = [UIFont systemFontOfSize:11];
     listView.textColor = [UIColor orangeColor];
     [listView setTags:@[@"苹果", @"香蕉", @"西瓜", @"大话西游", @"国产零零零七"]];
-    listView.isTouch = NO;
+//    listView.isTouch = NO;
+    listView.showTagMenu = YES;
     listView.labelMargin = 10;
     listView.isManySelect = YES;
     [self.view addSubview:listView];

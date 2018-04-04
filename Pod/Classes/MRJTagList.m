@@ -244,16 +244,15 @@
     }
     
     /*[tagView setBackgroundColor:[self getBackgroundColor]];
-    
     if ([self.tagDelegate respondsToSelector:@selector(selectedTag:tagIndex:)]) {
         [self.tagDelegate selectedTag:tagView.label.text tagIndex:tagView.tag];
     }
     
     if ([self.tagDelegate respondsToSelector:@selector(selectedTag:)]) {
         [self.tagDelegate selectedTag:tagView.label.text];
-    }
+    }*/
     
-    if (self.showTagMenu) {
+    /*if (self.showTagMenu) {
         UIMenuController *menuController = [UIMenuController sharedMenuController];
         [menuController setTargetRect:tagView.frame inView:self];
         [menuController setMenuVisible:YES animated:YES];
