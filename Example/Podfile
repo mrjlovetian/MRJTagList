@@ -1,15 +1,10 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'YHJTagList_Example', :exclusive => true do
-  pod 'YHJTagList', :path => '../'
+target 'YHJTagList_Example' do
+  pod 'MRJTagList', :path => '../'
 end
 
-target 'YHJTagList_Tests', :exclusive => true do
-  pod 'YHJTagList', :path => '../'
-
-  pod 'Specta'
-  pod 'Expecta'
-  pod 'FBSnapshotTestCase'
-  pod 'Expecta+Snapshots'
+target 'YHJTagList_Tests' do
+  pod 'MRJTagList', :path => '../'
 end

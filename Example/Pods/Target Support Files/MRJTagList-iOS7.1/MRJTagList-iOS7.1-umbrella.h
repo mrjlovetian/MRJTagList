@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "MRJTagList.h"
 
-FOUNDATION_EXPORT double Pods_YHJTagList_ExampleVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_YHJTagList_ExampleVersionString[];
+FOUNDATION_EXPORT double MRJTagListVersionNumber;
+FOUNDATION_EXPORT const unsigned char MRJTagListVersionString[];
 

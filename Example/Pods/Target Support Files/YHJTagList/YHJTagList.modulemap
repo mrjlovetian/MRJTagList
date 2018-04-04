@@ -1,6 +1,0 @@
-framework module YHJTagList {
-  umbrella header "YHJTagList-umbrella.h"
-
-  export *
-  module * { export * }
-}
