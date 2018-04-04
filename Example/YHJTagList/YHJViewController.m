@@ -31,7 +31,7 @@
     listView.font = [UIFont systemFontOfSize:11];
     listView.textColor = [UIColor orangeColor];
     [listView setTags:@[@"苹果", @"香蕉", @"西瓜", @"大话西游", @"国产零零零七"]];
-//    listView.isTouch = NO;
+    listView.isTouch = NO;
     listView.labelMargin = 10;
     listView.isManySelect = YES;
     [self.view addSubview:listView];
