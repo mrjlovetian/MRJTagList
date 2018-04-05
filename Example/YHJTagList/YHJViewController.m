@@ -19,7 +19,7 @@
     
     [super viewDidLoad]; 
 
-    MRJTagList *listView = [[MRJTagList alloc] initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 100)];
+    MRJTagList *listView = [[MRJTagList alloc] initWithFrame:CGRectMake(10, 100, [UIScreen mainScreen].bounds.size.width - 20, 100)];
     listView.tagDelegate = self;
     listView.automaticResize = YES;
     listView.bottomMargin = 10;
@@ -29,9 +29,9 @@
     listView.cornerRadius = 1.0;
     listView.font = [UIFont systemFontOfSize:11];
     listView.textColor = [UIColor orangeColor];
+    [listView setTagBackgroundColor:[UIColor yellowColor]];
     [listView setTags:@[@"苹果", @"香蕉", @"西瓜", @"大话西游", @"国产零零零七"]];
 //    listView.isTouch = NO;
-    listView.showTagMenu = YES;
     listView.labelMargin = 10;
     listView.isManySelect = YES;
     [self.view addSubview:listView];

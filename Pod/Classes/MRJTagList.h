@@ -17,9 +17,7 @@
     UIColor     *lblBackgroundColor;
 }
 
-@property (nonatomic) BOOL viewOnly;
-@property (nonatomic) BOOL showTagMenu;
-@property (nonatomic, strong) UIView *view;
+//@property (nonatomic, strong) UIView *view;
 @property (nonatomic, strong) NSArray *textArray;
 @property (nonatomic, weak) id<MRJTagListDelegate> tagDelegate;
 @property (nonatomic, strong) UIColor *highlightedBackgroundColor;

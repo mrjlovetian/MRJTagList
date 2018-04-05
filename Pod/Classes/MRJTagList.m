@@ -33,7 +33,7 @@
 
 @implementation MRJTagList
 
-@synthesize view, textArray, automaticResize;
+@synthesize textArray, automaticResize;
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -80,7 +80,6 @@
     self.textColor = TEXT_COLOR;
     self.textShadowColor = TEXT_SHADOW_COLOR;
     self.textShadowOffset = TEXT_SHADOW_OFFSET;
-    self.showTagMenu = DEFAULT_SHOW_TAG_MENU;
 }
 
 - (void)setTags:(NSArray *)array {
@@ -102,13 +101,6 @@
 - (void)setTagHighlightColor:(UIColor *)color {
     self.highlightedBackgroundColor = color;
     [self display];
-}
-
-- (void)setViewOnly:(BOOL)viewOnly {
-    if (_viewOnly != viewOnly) {
-        _viewOnly = viewOnly;
-        [self display];
-    }
 }
 
 - (void)layoutSubviews {
@@ -177,12 +169,7 @@
         
         [self addSubview:tagView];
         
-        if (!_viewOnly) {
-            [tagView.button addTarget:self action:@selector(touchDownInside:) forControlEvents:UIControlEventTouchDown];
-            [tagView.button addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
-            [tagView.button addTarget:self action:@selector(touchDragExit:) forControlEvents:UIControlEventTouchDragExit];
-            [tagView.button addTarget:self action:@selector(touchDragInside:) forControlEvents:UIControlEventTouchDragInside];
-        }
+        [tagView.button addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     sizeFit = CGSizeMake(self.frame.size.width, previousFrame.origin.y + previousFrame.size.height + self.bottomMargin + 1.0f);
@@ -197,11 +184,6 @@
     [self setContentOffset: CGPointMake(0.0, self.contentSize.height - self.bounds.size.height + self.contentInset.bottom) animated: animated];
 }
 
-- (void)touchDownInside:(id)sender {
-    UIButton *button = (UIButton*)sender;
-    [[button superview] setBackgroundColor:self.highlightedBackgroundColor];
-}
-
 - (void)touchUpInside:(id)sender {
     UIButton *button = (UIButton*)sender;
     MRJTagView *tagView = (MRJTagView *)[button superview];
@@ -211,7 +193,7 @@
         if (tagView.isSelected) {
             tagView.backgroundColor = [self getSelectBackColor];
         } else {
-            tagView.backgroundColor = [UIColor clearColor];
+            tagView.backgroundColor = [self getBackgroundColor];
         }
         
         if ([self.tagIndexs containsObject:[NSString stringWithFormat:@"%ld", tagView.tag]]) {
@@ -230,7 +212,7 @@
             [self.tagDelegate selectedTags:self.tagNames tagIndex:self.tagIndexs];
         }
     } else {
-        _temView.backgroundColor = [UIColor clearColor];
+        _temView.backgroundColor = [self getBackgroundColor];
         _temView = tagView;
         tagView.backgroundColor = [self getSelectBackColor];
         
@@ -242,32 +224,6 @@
             [self.tagDelegate selectedTag:tagView.label.text];
         }
     }
-    
-    /*[tagView setBackgroundColor:[self getBackgroundColor]];
-    if ([self.tagDelegate respondsToSelector:@selector(selectedTag:tagIndex:)]) {
-        [self.tagDelegate selectedTag:tagView.label.text tagIndex:tagView.tag];
-    }
-    
-    if ([self.tagDelegate respondsToSelector:@selector(selectedTag:)]) {
-        [self.tagDelegate selectedTag:tagView.label.text];
-    }*/
-    
-    /*if (self.showTagMenu) {
-        UIMenuController *menuController = [UIMenuController sharedMenuController];
-        [menuController setTargetRect:tagView.frame inView:self];
-        [menuController setMenuVisible:YES animated:YES];
-        [tagView becomeFirstResponder];
-    }*/
-}
-
-- (void)touchDragExit:(id)sender {
-    UIButton *button = (UIButton *)sender;
-    [[button superview] setBackgroundColor:[self getBackgroundColor]];
-}
-
-- (void)touchDragInside:(id)sender {
-    UIButton *button = (UIButton*)sender;
-    [[button superview] setBackgroundColor:[self getBackgroundColor]];
 }
 
 - (UIColor *)getBackgroundColor {
@@ -332,7 +288,7 @@
 }
 
 - (void)dealloc {
-    view = nil;
+//    view = nil;
     textArray = nil;
     lblBackgroundColor = nil;
 }
@@ -401,7 +357,6 @@
     _label.font = font;
     
     [_button setAccessibilityLabel:self.label.text];
-    
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
