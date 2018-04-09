@@ -66,7 +66,6 @@
 }
 
 - (void)setup {
-    [self addSubview:view];
     [self setClipsToBounds:YES];
     self.highlightedBackgroundColor = HIGHLIGHTED_BACKGROUND_COLOR;
     self.font = [UIFont systemFontOfSize:FONT_SIZE_DEFAULT];
