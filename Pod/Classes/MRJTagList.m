@@ -168,7 +168,6 @@
         tag++;
         
         [self addSubview:tagView];
-        
         [tagView.button addTarget:self action:@selector(touchUpInside:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -288,7 +287,6 @@
 }
 
 - (void)dealloc {
-//    view = nil;
     textArray = nil;
     lblBackgroundColor = nil;
 }
