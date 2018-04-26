@@ -249,7 +249,7 @@
     [self display];
 }
 
-- (void)setBorderColor:(UIColor*)borderColor {
+- (void)setBorderColor:(UIColor *)borderColor {
     _borderColor = borderColor;
     [self display];
 }
@@ -303,7 +303,6 @@
 }
 
 @end
-
 
 @implementation MRJTagView
 
