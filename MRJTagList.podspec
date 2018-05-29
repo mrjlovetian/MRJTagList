@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MRJTagList"
-  s.version          = "0.2.0.5"
+  s.version          = "0.2.0.6"
   s.summary          = "可设置多标签，单个标签选择."
 
 # This description is used to generate tags and improve search results.

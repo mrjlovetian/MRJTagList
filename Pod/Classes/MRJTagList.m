@@ -26,9 +26,11 @@
 #define DEFAULT_SHOW_TAG_MENU NO
 
 @interface MRJTagList () <MRJTagViewDelegate>
+
 @property (nonatomic, strong) MRJTagView *temView;
 @property (nonatomic, strong) NSMutableArray *tagNames;
 @property (nonatomic, strong) NSMutableArray *tagIndexs;
+
 @end
 
 @implementation MRJTagList
